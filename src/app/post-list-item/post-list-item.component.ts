@@ -10,8 +10,9 @@ export class PostListItemComponent implements OnInit {
   @Input() postTitle: string;
   @Input() postContent: string;
   @Input() postLike: number;
-  @Input() postDate: string;
 
+  postDate  = new Date();
+  
   constructor() { }
 
   ngOnInit() {
