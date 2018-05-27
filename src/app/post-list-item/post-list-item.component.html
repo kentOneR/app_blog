@@ -2,7 +2,7 @@
 'list-group-item-success': postLike > 0,
 'list-group-item-danger': 0 > postLike}">
   <h3>{{ postTitle }}</h3>
-  <span>{{ postDate | date: 'short' | uppercase }}</span>
+  <span>{{ postDate | date:"dd/MM/yyyy '-' HH:mm"| uppercase }}</span>
   <p>{{ postContent }}</p>
   <button class="btn btn-success" (click)="onLike()">Love it!</button>
   <button class="btn btn-danger" (click)="onDislike()">I don't love it!</button>
