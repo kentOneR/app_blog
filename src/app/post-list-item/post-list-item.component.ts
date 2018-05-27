@@ -22,12 +22,13 @@ export class PostListItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  addLike() {
-    this.postLike = this.postLike + 1;
+  onLike() {
+    this.postService.addLike(this.index);
+
   } 
 
-  addDislike() {
-    this.postLike = this.postLike - 1;
+  onDislike() {
+    this.postService.addDislike(this.index);
   }
 
   onDelete() {
