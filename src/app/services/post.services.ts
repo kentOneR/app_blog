@@ -64,5 +64,21 @@ export class PostService {
   deleteOne(i: number) {
     var index = i;
     this.posts.splice(index, 1);
+    this.emitPostSubject();
+    this.savePostsToServer();
   }
+
+  addLike(i: number) {
+    var index = i;
+    this.posts[index].loveIts = this.posts[index].loveIts + 1;
+    this.savePostsToServer();
+  }
+
+  addDislike(i: number) {
+    var index = i;
+    this.posts[index].loveIts = this.posts[index].loveIts - 1;
+    this.savePostsToServer();
+  }
+
+
 }
