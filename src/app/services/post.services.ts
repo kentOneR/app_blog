@@ -17,4 +17,9 @@ export class PostService{
           loveIts: 0,
         } 
       ];
+    
+    deleteOne(i:number){
+        var index = i;
+        this.posts.splice(index, 1);
+    }
 }
