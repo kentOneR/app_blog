@@ -1,4 +1,5 @@
 import { Component,Input, OnInit } from '@angular/core';
+import { PostService } from '../services/post.services';
 
 @Component({
   selector: 'app-post-list',
@@ -7,30 +8,14 @@ import { Component,Input, OnInit } from '@angular/core';
 })
 export class PostListComponent implements OnInit {
 
-  posts = [
-    {
-      title: 'Mon premier post',
-      content: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500',
-      loveIts: 1,
-    },
-    {
-      title: 'Mon deuxième post',
-      content: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500',
-      loveIts: -1,
+  posts: any[];
 
-    },
-    {
-      title: 'Encore un post',
-      content: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500',
-      loveIts: 0,
-    } 
-  ];
+  constructor(private postService: PostService){
 
-  constructor() {
-
-   }
+  }
 
   ngOnInit() {
+    this.posts = this.postService.posts;
   }
 
 }
