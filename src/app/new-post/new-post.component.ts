@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PostService } from '../services/post.services';
 import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-post',
@@ -10,7 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class NewPostComponent implements OnInit {
 
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService, private router: Router) {
 
   }
 
@@ -18,9 +19,9 @@ export class NewPostComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value);
     const title = form.value['title'];
-    const status = form.value['content'];
+    const content = form.value['content'];
+    this.postService.addPost(title, content);
   }
 
 }

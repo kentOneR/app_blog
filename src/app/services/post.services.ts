@@ -9,24 +9,7 @@ export class PostService {
 
   postsSubject = new Subject<any[]>();
 
-  private posts = [
-    {
-      title: 'Mon premier post',
-      content: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500',
-      loveIts: 1,
-    },
-    {
-      title: 'Mon deuxième post',
-      content: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500',
-      loveIts: -1,
-
-    },
-    {
-      title: 'Encore un post',
-      content: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500',
-      loveIts: 0,
-    } 
-  ];
+  private posts = [];
 
   constructor(private httpClient: HttpClient) { }
 
@@ -54,6 +37,7 @@ export class PostService {
       .subscribe(
         () => {
           console.log('Enregistrement terminé !');
+          this.emitPostSubject();
         },
         (error) => {
           console.log('Erreur ! : ' + error);
@@ -79,6 +63,19 @@ export class PostService {
     this.posts[index].loveIts = this.posts[index].loveIts - 1;
     this.savePostsToServer();
   }
+
+  addPost(title: string, content: string) {
+    const postObject = {
+      title: '',
+      content: '',
+      loveIts: 0
+    };
+    postObject.title = title;
+    postObject.content = content;
+    this.posts.push(postObject);
+    this.emitPostSubject();
+    this.savePostsToServer();
+}
 
 
 }
