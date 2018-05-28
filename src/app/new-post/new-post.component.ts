@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class NewPostComponent implements OnInit {
 
+  messageSend = false;
+
   constructor(private postService: PostService, private router: Router) {
 
   }
@@ -22,6 +24,10 @@ export class NewPostComponent implements OnInit {
     const title = form.value['title'];
     const content = form.value['content'];
     this.postService.addPost(title, content);
+    if (form.valid) {
+      form.reset();
+      this.messageSend = true;
+    }
   }
 
 }

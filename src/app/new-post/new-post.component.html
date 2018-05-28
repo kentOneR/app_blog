@@ -15,5 +15,8 @@
       </div>
       <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Publier</button>
     </form>
+    <div class="alert alert-success" role="alert" *ngIf="messageSend">
+      Bravo! Message posté
+    </div>
   </div>
 </div>
